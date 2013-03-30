@@ -7,6 +7,12 @@ class Bookset < Array
   FIVE_PERCENT_DISC = 0.95
   TEN_PERCENT_DISC = 0.9
 
+  DISCOUNT = {
+    2 => 0.95,
+    3 => 0.9,
+    4 => 0.8
+  }
+
   def bookset_price
     base_price * discount
   end
@@ -16,16 +22,7 @@ class Bookset < Array
   end
 
   def discount
-    case uniq.count
-    when 2
-      FIVE_PERCENT_DISC
-    when 3
-      TEN_PERCENT_DISC
-    when 4
-      0.8
-    else
-      NO_DISCOUNT
-    end
+    DISCOUNT[count] || 1
   end
 
 end
