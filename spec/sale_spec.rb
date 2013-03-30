@@ -27,9 +27,14 @@ describe Sale do
     Sale.new(cart).total.should == 16.00
     end
 
-  xit 'gives $23.20 for set of two plus one' do
-    cart = [:one, :two, :one]
-    Sale.new(cart).total.should == 23.20
+  it 'knows that one book is one set' do
+    cart = [:one]
+    Sale.new(cart).booksets.count == 1
   end
+
+  it 'knows that two diff books are one set' do
+    cart = [:one, :two]
+    Sale.new(cart).booksets.count == 1
+  end 
 
 end

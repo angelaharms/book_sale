@@ -5,6 +5,8 @@ class Sale
   FIVE_PERCENT_DISC = 0.95
   TEN_PERCENT_DISC = 0.9
 
+  attr_reader :booksets
+
   def initialize(cart)
     @cart = cart
     @booksets = [@cart]
