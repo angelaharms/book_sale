@@ -7,18 +7,21 @@ class Sale
 
   def initialize(cart)
     @cart = cart
+    @booksets = [@cart]
   end
 
   def total
-    base_price * discount
+    @booksets.inject(0) do |sum, this_set|
+      sum + base_price(this_set) * discount(this_set)
+    end
   end
 
-  def base_price
-    @cart.count * BOOK_PRICE
+  def base_price(bookset)
+    bookset.count * BOOK_PRICE
   end
 
-  def discount
-    case @cart.count
+  def discount(bookset)
+    case bookset.uniq.count
     when 2
       FIVE_PERCENT_DISC
     when 3

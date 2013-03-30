@@ -1,6 +1,7 @@
 require 'sale'
 
 describe Sale do
+
   it "gives $0 for no books" do
     cart = []
     Sale.new(cart).total.should == 0
@@ -20,4 +21,15 @@ describe Sale do
     cart = [:one, :four, :five]
     Sale.new(cart).total.should == 21.60
   end
+
+  it "gives $16 for two of the same book" do
+    cart = [:one, :one]
+    Sale.new(cart).total.should == 16.00
+    end
+
+  xit 'gives $23.20 for set of two plus one' do
+    cart = [:one, :two, :one]
+    Sale.new(cart).total.should == 23.20
+  end
+
 end
