@@ -7,16 +7,19 @@ class Sale
 
   def total(cart)
     cost = cart.count * BOOK_PRICE
-    discount = case cart.count
-               when 2
-                 FIVE_PERCENT_DISC
-               when 3
-                 TEN_PERCENT_DISC
-               else
-                 NO_DISCOUNT
-               end
-    cost *= discount
+    cost *= discount_for(cart)
     cost
+  end
+
+  def discount_for(cart)
+    case cart.count
+    when 2
+      FIVE_PERCENT_DISC
+    when 3
+      TEN_PERCENT_DISC
+    else
+      NO_DISCOUNT
+    end
   end
 
 end
