@@ -10,9 +10,11 @@ class Sale
   end
 
   def total
-    cost = @cart.count * BOOK_PRICE
-    cost *= discount
-    cost
+    base_price * discount
+  end
+
+  def base_price
+    @cart.count * BOOK_PRICE
   end
 
   def discount
