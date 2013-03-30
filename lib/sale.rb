@@ -4,7 +4,8 @@ class Sale
   NO_DISCOUNT = 1
   FIVE_PERCENT_DISC = 0.95
   TEN_PERCENT_DISC = 0.9
-
+  VOLUMES = [:one, :two, :three, :four, :five] 
+  
   attr_reader :booksets
 
   def initialize(cart)
@@ -15,7 +16,7 @@ class Sale
 
   def make_one_bookset
     this_set = []
-    [:one, :two, :three, :four, :five].each do |volume|
+    VOLUMES.each do |volume|
       if @cart.include?(volume)
         this_set << volume
         @cart.delete_at(@cart.index(volume))
