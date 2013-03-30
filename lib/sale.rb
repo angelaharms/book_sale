@@ -9,7 +9,19 @@ class Sale
 
   def initialize(cart)
     @cart = cart
-    @booksets = [@cart]
+    @booksets = []
+    @booksets << make_one_bookset until @cart.empty?
+  end
+
+  def make_one_bookset
+    this_set = []
+    [:one, :two, :three, :four, :five].each do |volume|
+      if @cart.include?(volume)
+        this_set << volume
+        @cart.delete_at(@cart.index(volume))
+      end
+    end
+    this_set
   end
 
   def total

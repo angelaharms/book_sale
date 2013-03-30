@@ -29,12 +29,12 @@ describe Sale do
 
   it 'knows that one book is one set' do
     cart = [:one]
-    Sale.new(cart).booksets.count == 1
+    Sale.new(cart).booksets.count.should == 1
   end
 
-  it 'knows that two diff books are one set' do
-    cart = [:one, :two]
-    Sale.new(cart).booksets.count == 1
-  end 
+  it 'knows that two of the same book are two different sets' do
+    cart = [:one, :one]
+    Sale.new(cart).booksets.count.should == 2
+  end
 
 end
