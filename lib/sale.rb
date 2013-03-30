@@ -23,7 +23,7 @@ class Sale
     VOLUMES.each do |volume|
       if @cart.include?(volume)
         this_set << volume
-        @cart.delete_at(@cart.index(volume))
+        @cart.delete_this(volume)
       end
     end
     this_set
@@ -52,6 +52,14 @@ class Sale
     else
       NO_DISCOUNT
     end
+  end
+
+end
+
+class Array
+  
+  def delete_this(item)
+    delete_at(index(item))
   end
 
 end
