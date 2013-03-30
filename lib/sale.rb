@@ -11,9 +11,13 @@ class Sale
   end
 
   def total
-    @booksets.inject(0) do |sum, this_set|
-      sum + base_price(this_set) * discount(this_set)
+    @booksets.inject(0) do |sum, bookset|
+      sum + bookset_price(bookset)
     end
+  end
+
+  def bookset_price(bookset)
+    base_price(bookset) * discount(bookset)
   end
 
   def base_price(bookset)
