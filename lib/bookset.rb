@@ -21,6 +21,8 @@ class Bookset < Array
       FIVE_PERCENT_DISC
     when 3
       TEN_PERCENT_DISC
+    when 4
+      0.8
     else
       NO_DISCOUNT
     end

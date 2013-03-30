@@ -37,4 +37,9 @@ describe Sale do
     Sale.new(cart).booksets.count.should == 2
   end
 
+  it 'gives $25.60 for that one set with just one missing' do
+    cart = [:one, :three, :four, :five]
+    Sale.new(cart).total.should == 25.6
+  end
+
 end
