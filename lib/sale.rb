@@ -10,6 +10,10 @@ class Sale
 
   def initialize(cart)
     @cart = cart
+    make_booksets
+  end
+
+  def make_booksets
     @booksets = []
     @booksets << make_one_bookset until @cart.empty?
   end
