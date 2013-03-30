@@ -1,3 +1,5 @@
+require 'array_extend'
+
 class Bookset < Array
 
   BOOK_PRICE = 8
