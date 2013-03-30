@@ -1,4 +1,5 @@
 require 'bookset'
+require 'array_extend'
 
 class Sale
 
@@ -17,12 +18,9 @@ class Sale
   end
 
   def make_one_bookset
-    bookset = Bookset.new
-    VOLUMES.each do |volume|
-      if @cart.include?(volume)
-        bookset << volume
-        @cart.delete_this(volume)
-      end
+    bookset = Bookset.new(@cart.uniq)
+    bookset.each do |book|
+      @cart.delete_this(book)
     end
     bookset 
   end
@@ -32,15 +30,3 @@ class Sale
   end
 end
 
-class Array
-  
-  def delete_this(item)
-    delete_at(index(item))
-  end
-
-  def sum(value_to_sum)
-    inject(0) do |sum, item_in_array|
-      sum + item_in_array.send(value_to_sum)
-    end
-  end
-end
