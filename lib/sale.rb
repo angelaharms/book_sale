@@ -5,14 +5,18 @@ class Sale
   FIVE_PERCENT_DISC = 0.95
   TEN_PERCENT_DISC = 0.9
 
-  def total(cart)
-    cost = cart.count * BOOK_PRICE
-    cost *= discount_for(cart)
+  def initialize(cart)
+    @cart = cart
+  end
+
+  def total
+    cost = @cart.count * BOOK_PRICE
+    cost *= discount
     cost
   end
 
-  def discount_for(cart)
-    case cart.count
+  def discount
+    case @cart.count
     when 2
       FIVE_PERCENT_DISC
     when 3
