@@ -3,14 +3,11 @@ require 'array_extend'
 class Bookset < Array
 
   BOOK_PRICE = 8
-  NO_DISCOUNT = 1
-  FIVE_PERCENT_DISC = 0.95
-  TEN_PERCENT_DISC = 0.9
-
   DISCOUNT = {
     2 => 0.95,
     3 => 0.9,
-    4 => 0.8
+    4 => 0.8,
+    5 => 0.75
   }
 
   def bookset_price
