@@ -4,22 +4,22 @@ class Bookset < Array
 
   BOOK_PRICE = 8
   DISCOUNT = {
-    2 => 0.95,
-    3 => 0.9,
-    4 => 0.8,
-    5 => 0.75
+    2 => 0.05,
+    3 => 0.10,
+    4 => 0.20,
+    5 => 0.25
   }
 
   def bookset_price
-    base_price * discount
+    base_price * (1.0 - percentage_discount)
   end
 
   def base_price
     count * BOOK_PRICE
   end
 
-  def discount
-    DISCOUNT[count] || 1
+  def percentage_discount
+    DISCOUNT[count] || 0
   end
 
 end

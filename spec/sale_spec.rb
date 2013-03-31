@@ -47,6 +47,14 @@ describe Sale do
     Sale.new(cart).total.should == 30
   end
 
+  xit 'gives 51.20 for the given set' do
+    cart = [:one, :one, :two, :two, :three, :three, :four, :five]
+    Sale.new(cart).total.should == 51.20
+  end
 
+  it 'gives the answer, yo' do
+    cart = [:one, :one, :one, :two, :three, :four, :four, :five, :five, :five, :five, :five]
+   puts Sale.new(cart).total
+  end
 
 end
